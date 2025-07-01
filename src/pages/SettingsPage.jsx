@@ -1,13 +1,14 @@
 import { useContext, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { BookPageContext } from '../contexts/BookPageContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import BookCard from '../components/BookCard'
 import '../styles/SettingsPage.css'
 
 const SettingsPage = () => {
   const { theme, toggleTheme, favorites, setFavorites, setBooks, setFilters, setSearchQuery } = useContext(AppContext)
   const { textSettings, setTextColor, setTextSize, toggleBold } = useContext(BookPageContext)
+  const navigate = useNavigate()
 
   const sampleBooks = [
     {
@@ -53,6 +54,7 @@ const SettingsPage = () => {
     localStorage.setItem('books', JSON.stringify(sample))
     setFilters({})
     setSearchQuery('')
+    navigate('/')
   }
 
   return (

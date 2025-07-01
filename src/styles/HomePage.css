@@ -27,6 +27,7 @@
   padding: 1rem;
   border-radius: 6px;
   background-color: #f9f9f9;
+  color: #222;
 }
 
 .book-grid {
@@ -51,6 +52,12 @@
 .theme-dark {
   --bg: #1e1e1e;
   --text: #f9f9f9;
+}
+
+.theme-dark .filters-panel {
+  background-color: #23272f;
+  color: #f9f9f9;
+  border-color: #444;
 }
 
 .book-grid {
