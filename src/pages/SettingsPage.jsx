@@ -30,32 +30,31 @@ const SettingsPage = () => {
   }
 
   const loadSamples = () => {
-    const sample = [
-      {
-        id: '1',
-        title: 'React в действии',
-        author: 'Mark Thomas',
-        year: 2019,
-        isbn: '1234567890',
-        description: 'Погружение в современные интерфейсы.',
-        cover: '/covers/react.jpg'
-      },
-      {
-        id: '2',
-        title: 'JavaScript глубже',
-        author: 'David Flanagan',
-        year: 2020,
-        isbn: '9876543210',
-        description: 'Магия JS изнутри.',
-        cover: '/covers/js.png'
-      }
-    ]
-    setBooks(sample)
-    localStorage.setItem('books', JSON.stringify(sample))
-    setFilters({})
-    setSearchQuery('')
-    navigate('/')
-  }
+  const sample = [
+    {
+      id: '1',
+      title: 'React в действии',
+      author: 'Mark Thomas',
+      year: 2019,
+      isbn: '1234567890',
+      description: 'Погружение в современные интерфейсы.',
+      cover: '/covers/react.jpg'
+    },
+    {
+      id: '2',
+      title: 'JavaScript глубже',
+      author: 'David Flanagan',
+      year: 2020,
+      isbn: '9876543210',
+      description: 'Магия JS изнутри.',
+      cover: '/covers/js.png'
+    }
+  ]
+  setBooks(sample)
+  localStorage.setItem('books', JSON.stringify(sample))
+  // Сбросить фильтры и поиск через navigate, чтобы очистить query-параметры
+  navigate('/', { replace: true })
+}
 
   return (
     <div className="settings-page">
