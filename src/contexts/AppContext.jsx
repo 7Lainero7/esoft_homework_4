@@ -113,23 +113,24 @@ useEffect(() => {
 
 
   return (
-    <AppContext.Provider
-      value={{
-        theme,
-        books,
-        favorites,
-        searchQuery,
-        filters,
-        toggleTheme,
-        addBook,
-        removeBook,
-        toggleFavorite,
-        setSearchQuery,
-        setFilters,
-        setBooks,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  )
+  <AppContext.Provider
+    value={{
+      theme,
+      books,
+      favorites,
+      searchQuery,
+      filters,
+      toggleTheme,
+      addBook,
+      removeBook,
+      toggleFavorite,
+      setSearchQuery,
+      setFilters,
+      setBooks,
+      setFavorites,
+    }}
+  >
+    {children}
+  </AppContext.Provider>
+)
 }
