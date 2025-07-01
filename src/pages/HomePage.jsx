@@ -6,7 +6,7 @@ import BookCard from '../components/BookCard'
 import '../styles/HomePage.css'
 
 const HomePage = () => {
-  const { books, searchQuery, filters } = useContext(AppContext)
+  const { books, searchQuery, filters, favorites } = useContext(AppContext)
 
   const filteredBooks = useMemo(() => {
     const query = searchQuery.toLowerCase()
