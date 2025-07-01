@@ -18,12 +18,12 @@ const HomePage = () => {
       )
       .filter((book) => {
         if (filters.authors?.length && !filters.authors.includes(book.author)) return false
-        if (filters.favoritesOnly && !filters.favorites.includes(book.id)) return false
+        if (filters.favoritesOnly && !favorites.includes(book.id)) return false
         if (filters.yearMin && book.year < filters.yearMin) return false
         if (filters.yearMax && book.year > filters.yearMax) return false
         return true
       })
-  }, [books, searchQuery, filters])
+  }, [books, searchQuery, filters, favorites])
 
   return (
     <div className="home-container">
