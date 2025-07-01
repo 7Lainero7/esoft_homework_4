@@ -1,46 +1,55 @@
 import { useContext } from 'react'
 import { AppContext } from '../contexts/AppContext'
+import { BookPageContext } from '../contexts/BookPageContext'
+import BookCard from '../components/BookCard'
+import '../styles/SettingsPage.css'
 
 const SettingsPage = () => {
-  const {
-    theme,
-    toggleTheme,
-    setFilters,
-    setSearchQuery,
-    setBooks,
-    setFavorites,
-  } = useContext(AppContext)
+  const { theme, toggleTheme, favorites, setFavorites, setBooks } = useContext(AppContext)
+  const { textSettings, setTextColor, setTextSize, toggleBold } = useContext(BookPageContext)
 
-  const resetFavorites = () => {
-    if (window.confirm('Уверены, что хотите сбросить избранное?')) {
+  const sampleBooks = [
+    {
+      id: 'preview1',
+      title: 'Preview Book',
+      author: 'Demo Author',
+      year: 2020,
+      isbn: '1234',
+      description: 'Пример книги',
+      cover: '/covers/react.jpg'
+    }
+  ]
+
+  const clearFavorites = () => {
+    if (confirm('Удалить все избранные книги?')) {
       setFavorites([])
+      localStorage.removeItem('favorites')
     }
   }
 
-  const loadSampleBooks = () => {
+  const loadSamples = () => {
     const sample = [
       {
         id: '1',
         title: 'React в действии',
-        author: 'Mark Tielens Thomas',
-        year: 2018,
-        isbn: '9781617293856',
-        description: 'Практический подход к созданию SPA на React.',
-        cover: '/covers/react.jpg',
+        author: 'Mark Thomas',
+        year: 2019,
+        isbn: '1234567890',
+        description: 'Погружение в современные интерфейсы.',
+        cover: '/covers/react.jpg'
       },
       {
         id: '2',
-        title: 'JavaScript: Полное руководство',
+        title: 'JavaScript глубже',
         author: 'David Flanagan',
         year: 2020,
-        isbn: '9781491952023',
-        description: 'Классика JavaScript, обновлённая.',
-        cover: '/covers/js.jpg',
-      },
+        isbn: '9876543210',
+        description: 'Магия JS изнутри.',
+        cover: '/covers/js.png'
+      }
     ]
     setBooks(sample)
-    setSearchQuery('')
-    setFilters({})
+    localStorage.setItem('books', JSON.stringify(sample))
   }
 
   return (
@@ -48,24 +57,41 @@ const SettingsPage = () => {
       <h1>⚙️ Настройки</h1>
 
       <section>
-        <h2>Тема</h2>
+        <h2>🎨 Тема</h2>
         <button onClick={toggleTheme}>
-          Переключить на {theme === 'light' ? 'тёмную' : 'светлую'} тему
+          Переключить тему: {theme === 'light' ? '☀️ Light' : '🌙 Dark'}
         </button>
-        <div className={`theme-preview ${theme}`}>
-          <div className="book-card">📘 Пример книги</div>
+        <div className={`preview-cards theme-${theme}`}>
+          {sampleBooks.map((b) => <BookCard key={b.id} book={b} />)}
         </div>
       </section>
 
       <section>
-        <h2>Управление данными</h2>
-        <button onClick={resetFavorites}>Сбросить избранное</button>
-        <button onClick={loadSampleBooks}>Загрузить пример книг</button>
+        <h2>🧹 Управление данными</h2>
+        <button onClick={clearFavorites}>Сбросить избранное</button>
+        <button onClick={loadSamples}>Загрузить пример книг</button>
       </section>
 
       <section>
-        <h2>Настройки чтения по умолчанию</h2>
-        <p>🔜 Тут можно внедрить сохранение дефолтных значений для BookPage</p>
+        <h2>📝 Настройки текста по умолчанию</h2>
+        <label>
+          Цвет:
+          <input type="radio" name="color" value="black" onChange={() => setTextColor('black')} /> black
+          <input type="radio" name="color" value="sepia" onChange={() => setTextColor('saddlebrown')} /> sepia
+          <input type="radio" name="color" value="darkblue" onChange={() => setTextColor('darkblue')} /> dark blue
+        </label>
+        <label>
+          Размер:
+          <select value={textSettings.size} onChange={(e) => setTextSize(e.target.value)}>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
+        <label>
+          <input type="checkbox" checked={textSettings.bold} onChange={toggleBold} />
+          Жирный шрифт
+        </label>
       </section>
     </div>
   )

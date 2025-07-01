@@ -1,0 +1,17 @@
+.settings-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.settings-page section {
+  margin-bottom: 2rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+.preview-cards {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
