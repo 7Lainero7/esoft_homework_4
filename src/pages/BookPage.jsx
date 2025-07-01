@@ -34,28 +34,6 @@ const BookContent = ({ book }) => {
         </button>
       </div>
 
-      <div className="text-settings">
-        <h3>⚙️ Настройки текста:</h3>
-        <label>
-          Цвет:
-          <input type="radio" name="color" value="black" onChange={() => setTextColor('black')} /> black
-          <input type="radio" name="color" value="sepia" onChange={() => setTextColor('saddlebrown')} /> sepia
-          <input type="radio" name="color" value="darkblue" onChange={() => setTextColor('darkblue')} /> dark blue
-        </label>
-        <label>
-          Размер:
-          <select value={textSettings.size} onChange={(e) => setTextSize(e.target.value)}>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-        </label>
-        <label>
-          <input type="checkbox" checked={textSettings.bold} onChange={toggleBold} />
-          Жирный шрифт
-        </label>
-      </div>
-
       <div className="book-text" style={textStyle}>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
         <p>Curabitur quis mauris nec libero euismod imperdiet...</p>
