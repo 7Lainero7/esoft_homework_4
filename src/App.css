@@ -45,9 +45,3 @@ body.theme-dark {
   --bg: #1e1e1e;
   --text: #f9f9f9;
 }
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-}
-
