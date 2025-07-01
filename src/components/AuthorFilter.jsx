@@ -28,3 +28,5 @@ const AuthorFilter = ({ options }) => {
     </div>
   )
 }
+
+export default AuthorFilter

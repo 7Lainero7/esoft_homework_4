@@ -9,3 +9,5 @@ const ResetFiltersButton = () => {
 
   return <button onClick={reset}>Сбросить фильтры</button>
 }
+
+export default ResetFiltersButton
