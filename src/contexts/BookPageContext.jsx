@@ -25,9 +25,9 @@ export const BookPageProvider = ({ children }) => {
   if (saved) setTextSettings(JSON.parse(saved))
     }, [])
 
-    useEffect(() => {
-    localStorage.setItem('textSettings', JSON.stringify(textSettings))
-    }, [textSettings])
+  useEffect(() => {
+  localStorage.setItem('textSettings', JSON.stringify(textSettings))
+  }, [textSettings])
 
 
   return (

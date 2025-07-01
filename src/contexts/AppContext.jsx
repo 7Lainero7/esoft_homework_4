@@ -58,6 +58,8 @@ export const AppProvider = ({ children }) => {
       cover: '/covers/js.png'
     }
   ])
+  }, [])
+  
   // 1. Загружаем тему из localStorage при запуске
 useEffect(() => {
   const savedTheme = localStorage.getItem('theme')
@@ -96,7 +98,6 @@ useEffect(() => {
 useEffect(() => {
   localStorage.setItem('books', JSON.stringify(books))
 }, [books])
-}, [])
 
   return (
     <AppContext.Provider
