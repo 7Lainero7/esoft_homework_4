@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 export const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
   const [books, setBooks] = useState([])
   const [favorites, setFavorites] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -22,11 +22,6 @@ export const AppProvider = ({ children }) => {
       prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
     )
   }
-
-  useEffect(() => {
-  const savedTheme = localStorage.getItem('theme')
-  if (savedTheme) setTheme(savedTheme)
-}, [])
 
 useEffect(() => {
   document.body.classList.toggle('theme-dark', theme === 'dark')
