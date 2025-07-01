@@ -126,6 +126,7 @@ useEffect(() => {
         toggleFavorite,
         setSearchQuery,
         setFilters,
+        setBooks,
       }}
     >
       {children}

@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { BookPageContext } from '../contexts/BookPageContext'
+import { Link } from 'react-router-dom'
 import BookCard from '../components/BookCard'
 import '../styles/SettingsPage.css'
 
@@ -56,6 +57,10 @@ const SettingsPage = () => {
 
   return (
     <div className="settings-page">
+        <nav style={{ marginBottom: '1rem' }}>
+            <Link to="/" style={{ marginRight: '1rem' }}>🏠 На главную</Link>
+            <Link to="/settings">⚙️ Настройки</Link>
+        </nav>
       <h1>⚙️ Настройки</h1>
 
       <section>

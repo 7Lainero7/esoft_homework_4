@@ -60,3 +60,19 @@ body.theme-dark {
   --bg: #1e1e1e;
   --text: #f9f9f9;
 }
+
+nav {
+  margin-bottom: 1rem;
+}
+nav a {
+  margin-right: 1rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a:last-child {
+  margin-right: 0;
+}
+nav a:hover {
+  text-decoration: underline;
+}
