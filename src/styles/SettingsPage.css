@@ -1,11 +1,12 @@
-.settings-page {
+.home-container,
+.settings-page,
+.book-page {
   background-color: var(--bg);
   color: var(--text);
+  min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem;
 }
+
 
 .settings-page section {
   margin-bottom: 2rem;
