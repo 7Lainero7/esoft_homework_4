@@ -1,25 +1,28 @@
-import { useQueryState } from '../utils/useQueryState'
+import { useContext } from 'react'
+import { AppContext } from '../contexts/AppContext'
 
-const AuthorFilter = ({ options }) => {
-  const [params, setParam] = useQueryState()
-  const selected = params.getAll('author')
+const AuthorFilter = () => {
+  const { books, filters, setFilters } = useContext(AppContext)
+
+  const allAuthors = [...new Set(books.map((b) => b.author))]
 
   const toggleAuthor = (author) => {
+    const selected = filters.authors || []
     const updated = selected.includes(author)
       ? selected.filter((a) => a !== author)
       : [...selected, author]
-    setParam('author', updated)
+    setFilters({ ...filters, authors: updated })
   }
 
   return (
     <div>
-      {options.map((author) => (
+      {allAuthors.map((author) => (
         <button
           key={author}
           onClick={() => toggleAuthor(author)}
           style={{
-            background: selected.includes(author) ? '#ddd' : 'white',
             margin: '4px',
+            background: filters.authors?.includes(author) ? '#ddd' : 'white'
           }}
         >
           {author}

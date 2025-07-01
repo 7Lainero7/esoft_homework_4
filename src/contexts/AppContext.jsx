@@ -1,4 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 
 export const AppContext = createContext()
 
@@ -90,6 +92,24 @@ useEffect(() => {
 
   if (search) setSearchQuery(search)
 }, [])
+    const location = useLocation()
+const navigate = useNavigate()
+
+useEffect(() => {
+  const params = new URLSearchParams()
+
+  if (searchQuery) params.set('search', searchQuery)
+  if (filters.authors?.length) {
+    filters.authors.forEach((author) => params.append('author', author))
+  }
+  if (filters.yearMin !== undefined) params.set('yearMin', filters.yearMin)
+  if (filters.yearMax !== undefined) params.set('yearMax', filters.yearMax)
+  if (filters.favoritesOnly) params.set('favorites', 'true')
+
+  const newUrl = `${location.pathname}?${params.toString()}`
+  navigate(newUrl, { replace: true })
+}, [searchQuery, filters])
+
 
 
   return (

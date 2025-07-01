@@ -35,10 +35,17 @@ const HomePage = () => {
       <div className="main-content">
         <FiltersPanel />
         <div className="book-grid">
-          {filteredBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
-        </div>
+            {filteredBooks.length === 0 ? (
+                <p style={{ gridColumn: '1 / -1', fontStyle: 'italic', opacity: 0.6 }}>
+                Ничего не найдено по текущему запросу или фильтрам.
+                </p>
+            ) : (
+                filteredBooks.map((book) => (
+                <BookCard key={book.id} book={book} />
+                ))
+            )}
+            </div>
+
       </div>
     </div>
   )
