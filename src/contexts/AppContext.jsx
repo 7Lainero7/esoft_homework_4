@@ -58,7 +58,45 @@ export const AppProvider = ({ children }) => {
       cover: '/covers/js.png'
     }
   ])
-  }, [])
+  // 1. Загружаем тему из localStorage при запуске
+useEffect(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme) setTheme(savedTheme)
+}, [])
+
+// 2. Сохраняем тему при её изменении
+useEffect(() => {
+  localStorage.setItem('theme', theme)
+}, [theme])
+
+// 3. Загружаем избранное
+useEffect(() => {
+  const savedFavs = localStorage.getItem('favorites')
+  if (savedFavs) setFavorites(JSON.parse(savedFavs))
+}, [])
+
+// 4. Сохраняем избранное
+useEffect(() => {
+  localStorage.setItem('favorites', JSON.stringify(favorites))
+}, [favorites])
+
+// 5. Загружаем книги
+useEffect(() => {
+  const savedBooks = localStorage.getItem('books')
+  if (savedBooks) {
+    setBooks(JSON.parse(savedBooks))
+  } else {
+    const sample = [ /* твои моковые книги */ ]
+    setBooks(sample)
+    localStorage.setItem('books', JSON.stringify(sample))
+  }
+}, [])
+
+// 6. Сохраняем книги при изменении
+useEffect(() => {
+  localStorage.setItem('books', JSON.stringify(books))
+}, [books])
+}, [])
 
   return (
     <AppContext.Provider

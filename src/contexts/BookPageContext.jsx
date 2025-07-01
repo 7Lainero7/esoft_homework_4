@@ -20,6 +20,15 @@ export const BookPageProvider = ({ children }) => {
   const toggleBold = () => {
     setTextSettings((prev) => ({ ...prev, bold: !prev.bold }))
   }
+  useEffect(() => {
+  const saved = localStorage.getItem('textSettings')
+  if (saved) setTextSettings(JSON.parse(saved))
+    }, [])
+
+    useEffect(() => {
+    localStorage.setItem('textSettings', JSON.stringify(textSettings))
+    }, [textSettings])
+
 
   return (
     <BookPageContext.Provider
