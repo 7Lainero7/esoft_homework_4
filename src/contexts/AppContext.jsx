@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 export const AppContext = createContext()
 
@@ -15,12 +15,29 @@ export const AppProvider = ({ children }) => {
 
   const addBook = (book) => setBooks((prev) => [...prev, book])
   const removeBook = (id) => setBooks((prev) => prev.filter((b) => b.id !== id))
-
   const toggleFavorite = (id) => {
     setFavorites((prev) =>
       prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
     )
   }
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const authors = params.getAll('author')
+    const yearMin = params.get('yearMin')
+    const yearMax = params.get('yearMax')
+    const favoritesOnly = params.get('favorites') === 'true'
+    const search = params.get('search')
+
+    setFilters({
+      authors,
+      yearMin: yearMin ? parseInt(yearMin) : undefined,
+      yearMax: yearMax ? parseInt(yearMax) : undefined,
+      favoritesOnly,
+    })
+
+    if (search) setSearchQuery(search)
+  }, [])
 
   return (
     <AppContext.Provider
@@ -35,7 +52,7 @@ export const AppProvider = ({ children }) => {
         removeBook,
         toggleFavorite,
         setSearchQuery,
-        setFilters
+        setFilters,
       }}
     >
       {children}
