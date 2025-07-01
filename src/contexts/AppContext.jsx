@@ -29,7 +29,7 @@ export const AppProvider = ({ children }) => {
 }, [])
 
 useEffect(() => {
-  localStorage.setItem('theme', theme)
+  document.body.classList.toggle('theme-dark', theme === 'dark')
 }, [theme])
 
 useEffect(() => {
