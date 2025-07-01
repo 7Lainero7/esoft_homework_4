@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { BookPageContext } from '../contexts/BookPageContext'
 import BookCard from '../components/BookCard'
