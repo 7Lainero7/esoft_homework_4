@@ -5,7 +5,7 @@ import BookCard from '../components/BookCard'
 import '../styles/SettingsPage.css'
 
 const SettingsPage = () => {
-  const { theme, toggleTheme, favorites, setFavorites, setBooks } = useContext(AppContext)
+  const { theme, toggleTheme, favorites, setFavorites, setBooks, setFilters, setSearchQuery } = useContext(AppContext)
   const { textSettings, setTextColor, setTextSize, toggleBold } = useContext(BookPageContext)
 
   const sampleBooks = [
@@ -50,6 +50,8 @@ const SettingsPage = () => {
     ]
     setBooks(sample)
     localStorage.setItem('books', JSON.stringify(sample))
+    setFilters({})
+    setSearchQuery('')
   }
 
   return (

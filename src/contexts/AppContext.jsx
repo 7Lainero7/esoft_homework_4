@@ -11,8 +11,12 @@ export const AppProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState({})
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+   const toggleTheme = () => {
+    setTheme((prev) => {
+      const next = prev === 'light' ? 'dark' : 'light'
+      localStorage.setItem('theme', next)
+      return next
+    })
   }
 
   const addBook = (book) => setBooks((prev) => [...prev, book])
