@@ -55,7 +55,7 @@ export const AppProvider = ({ children }) => {
       year: 2020,
       isbn: '9876543210',
       description: 'Магия JS изнутри.',
-      cover: '/covers/js.jpg'
+      cover: '/covers/js.png'
     }
   ])
   }, [])
