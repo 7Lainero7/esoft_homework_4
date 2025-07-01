@@ -51,6 +51,10 @@ const SettingsPage = () => {
     setBooks(sample)
     localStorage.setItem('books', JSON.stringify(sample))
   }
+  useEffect(() => {
+  document.body.classList.toggle('theme-dark', theme === 'dark')
+}, [theme])
+
 
   return (
     <div className="settings-page">
