@@ -9,17 +9,15 @@ export const BookPageProvider = ({ children }) => {
     bold: false
   })
 
-  const setTextColor = (color) => {
+  const setTextColor = (color) =>
     setTextSettings((prev) => ({ ...prev, color }))
-  }
 
-  const setTextSize = (size) => {
+  const setTextSize = (size) =>
     setTextSettings((prev) => ({ ...prev, size }))
-  }
 
-  const toggleBold = () => {
+  const toggleBold = () =>
     setTextSettings((prev) => ({ ...prev, bold: !prev.bold }))
-  }
+  
   useEffect(() => {
   const saved = localStorage.getItem('textSettings')
   if (saved) setTextSettings(JSON.parse(saved))
