@@ -32,6 +32,7 @@ useEffect(() => {
   document.body.classList.toggle('theme-dark', theme === 'dark')
 }, [theme])
 
+
 useEffect(() => {
   const savedFavs = localStorage.getItem('favorites')
   if (savedFavs) setFavorites(JSON.parse(savedFavs))

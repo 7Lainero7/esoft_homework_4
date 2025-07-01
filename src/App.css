@@ -41,6 +41,21 @@
   color: #888;
 }
 
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.card {
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+
 body.theme-dark {
   --bg: #1e1e1e;
   --text: #f9f9f9;
