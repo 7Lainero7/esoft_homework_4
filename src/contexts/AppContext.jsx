@@ -37,6 +37,27 @@ export const AppProvider = ({ children }) => {
     })
 
     if (search) setSearchQuery(search)
+
+        setBooks([
+    {
+      id: '1',
+      title: 'React в действии',
+      author: 'Mark Thomas',
+      year: 2019,
+      isbn: '1234567890',
+      description: 'Погружение в современные интерфейсы.',
+      cover: '/covers/react.jpg'
+    },
+    {
+      id: '2',
+      title: 'JavaScript глубже',
+      author: 'David Flanagan',
+      year: 2020,
+      isbn: '9876543210',
+      description: 'Магия JS изнутри.',
+      cover: '/covers/js.jpg'
+    }
+  ])
   }, [])
 
   return (
